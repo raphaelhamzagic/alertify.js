@@ -490,6 +490,8 @@
 				return this;
 			},
 
+
+
 			/**
 			 * Add new log message
 			 * If a type is passed, a class name "alertify-log-{type}" will get added.
@@ -502,6 +504,7 @@
 			 * @return {undefined}
 			 */
 			notify : function (message, type, wait) {
+				this.closeAll();
 				var log = document.createElement("article");
 				log.className = "alertify-log" + ((typeof type === "string" && type !== "") ? " alertify-log-" + type : "");
 				log.innerHTML = message;
@@ -510,6 +513,15 @@
 				// triggers the CSS animation
 				setTimeout(function() { log.className = log.className + " alertify-log-show"; }, 50);
 				this.close(log, wait);
+			},
+
+			closeAll: function() {
+				var arrLogs = document.querySelectorAll('.alertify-log');
+				var log;
+				for (var i=0; i<arrLogs.length; i++) {
+					log = arrLogs[i];
+					this.close(log,1);
+				}
 			},
 
 			/**
