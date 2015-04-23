@@ -7,7 +7,6 @@
     "Gruntfile.js",
     "package.json",
     "test",
-    "src",
     "example",
     ".travis.yml",
     "Contributors.md"
